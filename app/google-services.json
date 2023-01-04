@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "383260132567",
+    "project_id": "gymregister2023",
+    "storage_bucket": "gymregister2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383260132567:android:ce2e8dfc05e8c6c0d49c92",
+        "android_client_info": {
+          "package_name": "com.tatho.gymregister"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383260132567-0c5jukjchvbn25ns4cn0vhdgf8j7cpb0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5S4z1Qudkpbt33cVZmKzW8LHEt7Ckoaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383260132567-0c5jukjchvbn25ns4cn0vhdgf8j7cpb0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
