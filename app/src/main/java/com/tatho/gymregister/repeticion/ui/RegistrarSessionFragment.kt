@@ -1,4 +1,4 @@
-package com.tatho.gymregister
+package com.tatho.gymregister.repeticion.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -6,12 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.tatho.gymregister.R
 import com.tatho.gymregister.databinding.FragmentRegistrarRepeticionBinding
-import com.tatho.gymregister.ejercicio.data.SessionExercise
+import com.tatho.gymregister.ejercicio.data.Exercise
 import com.tatho.gymregister.repeticion.data.Repeticion
-import com.tatho.gymregister.repeticion.data.servicio.FireBaseService
+import com.tatho.gymregister.repeticion.data.Reps
+import com.tatho.gymregister.repeticion.ui.view.ExerciseAdapter
+import com.tatho.gymregister.repeticion.ui.view.ExerciseViewHolder
+import com.tatho.gymregister.rutina.model.RuntimeExercise
 
 /**
  * A simple [Fragment] subclass.
@@ -24,7 +29,6 @@ class RegistrarSessionFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private val items = mutableListOf<Reps>()
 
-    private val serieService = FireBaseService()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,20 +57,29 @@ class RegistrarSessionFragment : Fragment() {
                 Log.e("ITEMS", "peso : $peso , repeticiones: $repeticiones")
             }
 
-            val sessionExercise =
-                SessionExercise(binding.textNombre.text.toString(), repeticionesMutableList)
-            serieService.addExercise(sessionExercise)
+            val exercise =
+                Exercise(binding.textNombre.text.toString(), repeticionesMutableList)
+
+            RuntimeExercise.exercises.add(exercise)
+
+            cleanRegister(adapter)
+            val navController = findNavController()
+            navController.popBackStack()
         }
 
         binding.clean.setOnClickListener {
-            items.clear()
-            items.add(Reps(0, 0))
-            adapter.notifyDataSetChanged()
+            cleanRegister(adapter)
         }
 
         binding.addSession.setOnClickListener {
             items.add(Reps(0, 0))
             adapter.notifyItemInserted(items.size - 1)
         }
+    }
+
+    private fun cleanRegister(adapter: ExerciseAdapter) {
+        items.clear()
+        items.add(Reps(0, 0))
+        adapter.notifyDataSetChanged()
     }
 }

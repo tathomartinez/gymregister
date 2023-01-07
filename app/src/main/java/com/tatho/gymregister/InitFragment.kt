@@ -1,10 +1,10 @@
 package com.tatho.gymregister
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.tatho.gymregister.databinding.FragmentInitBinding
 
@@ -27,7 +27,7 @@ class InitFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.initFragment.setOnClickListener {
-            findNavController().navigate(R.id.action_initFragment_to_registrarRepeticionFragment)
+            findNavController().navigate(R.id.action_initFragment_to_rutinaFragment)
         }
 
     }

@@ -1,4 +1,4 @@
-package com.tatho.gymregister.view
+package com.tatho.gymregister.repeticion.ui.view
 
 import androidx.lifecycle.ViewModel
 

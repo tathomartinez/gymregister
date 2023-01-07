@@ -12,12 +12,29 @@
         android:label="fragment_init"
         tools:layout="@layout/fragment_init" >
         <action
-            android:id="@+id/action_initFragment_to_registrarRepeticionFragment"
-            app:destination="@id/registrarRepeticionFragment" />
+            android:id="@+id/action_initFragment_to_rutinaFragment"
+            app:destination="@id/rutinaFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrarRepeticionFragment"
-        android:name="com.tatho.gymregister.RegistrarSessionFragment"
+        android:name="com.tatho.gymregister.repeticion.ui.RegistrarSessionFragment"
         android:label="fragment_registrar_repeticion"
         tools:layout="@layout/fragment_registrar_repeticion" />
+    <fragment
+        android:id="@+id/showProgressFragment"
+        android:name="com.tatho.gymregister.showprogress.ShowProgressFragment"
+        android:label="fragment_show_progress"
+        tools:layout="@layout/fragment_show_progress" />
+    <fragment
+        android:id="@+id/rutinaFragment"
+        android:name="com.tatho.gymregister.rutina.ui.RutinaFragment"
+        android:label="fragment_rutina"
+        tools:layout="@layout/fragment_rutina" >
+        <action
+            android:id="@+id/action_rutinaFragment_to_registrarRepeticionFragment"
+            app:destination="@id/registrarRepeticionFragment" />
+        <action
+            android:id="@+id/action_rutinaFragment_to_showProgressFragment"
+            app:destination="@id/showProgressFragment" />
+    </fragment>
 </navigation>

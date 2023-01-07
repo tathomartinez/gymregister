@@ -1,4 +1,4 @@
-package com.tatho.gymregister
+package com.tatho.gymregister.repeticion.ui.view
 
 import android.text.Editable
 import android.text.TextWatcher
@@ -6,14 +6,12 @@ import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.tatho.gymregister.databinding.RegisterItemBinding
+import com.tatho.gymregister.repeticion.data.Reps
 
 class ExerciseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private var binding = RegisterItemBinding.bind(view)
     var pesoValue = 0
     var reps = 0
-//    val peso: EditText = itemView.findViewById(R.id.peso)
-//    val repeticiones: EditText = itemView.findViewById(R.id.repeticiones)
-
     init {
         binding.txtPeso.addTextChangedListener(object : TextWatcher {
 

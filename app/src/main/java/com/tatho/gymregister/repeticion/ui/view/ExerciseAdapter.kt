@@ -1,9 +1,11 @@
-package com.tatho.gymregister
+package com.tatho.gymregister.repeticion.ui.view
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.tatho.gymregister.R
+import com.tatho.gymregister.repeticion.data.Reps
 
 class ExerciseAdapter(val dataSet: List<Reps>) :
     RecyclerView.Adapter<ExerciseViewHolder>() {
@@ -15,6 +17,7 @@ class ExerciseAdapter(val dataSet: List<Reps>) :
     }
 
     override fun getItemCount() = dataSet.size
+
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
         Log.d("EPISODIOS", "llego al bindView position:$position")
         val item: Reps = dataSet[position]
