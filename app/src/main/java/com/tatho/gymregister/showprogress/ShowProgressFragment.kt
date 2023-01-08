@@ -13,7 +13,6 @@ import com.tatho.gymregister.databinding.FragmentShowProgressBinding
 import com.tatho.gymregister.rutina.model.RuntimeExercise
 import com.tatho.gymregister.rutina.ui.RuntimeAdapter
 import com.tatho.gymregister.rutina.ui.RuntimeExerciseViewHolder
-import com.tatho.gymregister.rutina.ui.item.RuntimeItemAdapter
 import com.tatho.gymregister.rutina.ui.item.RuntimeItemExerciseViewHolder
 
 

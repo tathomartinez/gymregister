@@ -1,10 +1,10 @@
 package com.tatho.gymregister.repeticion.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,6 +40,16 @@ class RegistrarSessionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        val exercises = arrayListOf<String>("Sentadilla libre, peso muerto, pres militar, jalon mancuerna, sancada, hip trush, Curl biceps, extensiones de cuadriceps")
+        val exercises =
+            "SENTADILLA LIBRE,PESO MUERTO,PRES MILITAR,JALON MANCUERNA,SANCADA,HIP TRUSH,CURL BICEPS,EXTENSIONES DE CUADRICEPS".split(
+                ","
+            )
+        val arrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(view.context,
+            androidx.transition.R.layout.support_simple_spinner_dropdown_item, exercises)
+
+        binding.selectExercise.adapter = arrayAdapter
+
         recyclerView = requireView().findViewById(R.id.exercises)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         items.add(Reps(0, 0))
@@ -53,12 +63,12 @@ class RegistrarSessionFragment : Fragment() {
                     recyclerView.findViewHolderForAdapterPosition(i) as ExerciseViewHolder
                 val peso = viewHolder.pesoValue
                 val repeticiones = viewHolder.reps
-                repeticionesMutableList.add(Repeticion(peso, repeticiones))
-//                Log.e("ITEMS", "peso : $peso , repeticiones: $repeticiones")
+                val unidadDeMedida = viewHolder.unid
+                repeticionesMutableList.add(Repeticion(peso, repeticiones, unidadDeMedida))
             }
 
             val exercise =
-                Exercise(binding.textNombre.text.toString(), repeticionesMutableList)
+                Exercise(binding.selectExercise.selectedItem.toString(), repeticionesMutableList)
 
             RuntimeExercise.exercises.add(exercise)
 

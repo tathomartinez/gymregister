@@ -1,6 +1,6 @@
 package com.tatho.gymregister.repeticion.data
 
-data class Repeticion(val peso: Int, val repeticionMaxima: Int) {
+data class Repeticion(val peso: Int, val repeticionMaxima: Int, val unidadDeMedida: String) {
     companion object {
         private const val serialVersionUID = 1L
         fun mapToRepeticion(map: Map<String, Any>): MutableList<Repeticion> {
@@ -13,6 +13,7 @@ data class Repeticion(val peso: Int, val repeticionMaxima: Int) {
                         val repeticion = Repeticion(
                             peso = (it["peso"] as Long).toInt(),
                             repeticionMaxima = (it["repeticionMaxima"] as Long).toInt(),
+                            unidadDeMedida = it["unidadDeMedida"] as String,
                         )
 
                         repeticiones.add(repeticion)

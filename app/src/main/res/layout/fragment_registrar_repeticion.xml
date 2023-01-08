@@ -20,19 +20,17 @@
             android:layout_height="wrap_content"
             android:text="Nombre Ejercicio" />
 
-        <EditText
-            android:id="@+id/textNombre"
+        <Spinner
+            android:id="@+id/selectExercise"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:hint="Nombre del ejercicio" />
+            android:layout_height="wrap_content"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/exercises"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
 
@@ -40,13 +38,13 @@
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save" />
+            android:text="Salvar Ejercicio" />
 
         <Button
             android:id="@+id/clean"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Clean" />
+            android:text="Limpiar" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addSession"
