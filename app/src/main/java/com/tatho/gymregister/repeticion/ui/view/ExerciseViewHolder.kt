@@ -64,7 +64,6 @@ class ExerciseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 
     fun bind(reps: Reps) {
-        Log.d("EPISODIOS", "Este es el viewHolder")
         binding.txtPeso.setText(reps.peso.toString())
         binding.txtReps.setText(reps.reps.toString())
     }

@@ -23,13 +23,14 @@ class RuntimeExerciseViewHolder(val view: View) :
         binding.rvExercise.layoutManager = linearLayoutManager
     }
 
-    fun bind(runtimeExercise: RuntimeExercise) {
-        binding.tvDate.text = (runtimeExercise.date)
-        runtimeExercise.exercises?.let { exercises ->
+    fun bind(item: RuntimeExercise) {
+        binding.tvDate.text = (item.date)
+        item.exercises?.let { exercises ->
             exercises.forEach {
                 listExercise.add(it)
             }
+            adapter.notifyDataSetChanged()
         }
-        adapter.notifyDataSetChanged()
+
     }
 }

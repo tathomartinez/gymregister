@@ -2,6 +2,7 @@ package com.tatho.gymregister.rutina.model
 
 import android.util.Log
 import com.tatho.gymregister.ejercicio.data.Exercise
+import com.tatho.gymregister.ejercicio.data.Exercise.Companion.mapToExercise
 import com.tatho.gymregister.repeticion.data.Repeticion
 import java.io.Serializable
 import java.text.SimpleDateFormat
@@ -34,24 +35,6 @@ class RuntimeExercise(
                 userId = map["userId"] as Long,
                 exercises = mapToExercise(map)
             )
-        }
-
-        private fun mapToExercise(map: Map<String, Any>): MutableList<Exercise> {
-            val exercises = mutableListOf<Exercise>()
-            for ((key, value) in map) {
-                if (key == "exercises") {
-                    (value as ArrayList<*>).forEach{
-                        it as Map<*,*>
-                        Log.e("VALUE", it["nameExercise"] as String)
-                        val exercise = Exercise(
-                            nameExercise = it["nameExercise"] as String,
-                            series = mutableListOf<Repeticion>()
-                        )
-                        exercises.add(exercise)
-                    }
-                }
-            }
-            return exercises
         }
     }
 }
