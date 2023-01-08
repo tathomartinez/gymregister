@@ -13,6 +13,8 @@ import com.tatho.gymregister.databinding.FragmentShowProgressBinding
 import com.tatho.gymregister.rutina.model.RuntimeExercise
 import com.tatho.gymregister.rutina.ui.RuntimeAdapter
 import com.tatho.gymregister.rutina.ui.RuntimeExerciseViewHolder
+import com.tatho.gymregister.rutina.ui.item.RuntimeItemAdapter
+import com.tatho.gymregister.rutina.ui.item.RuntimeItemExerciseViewHolder
 
 
 class ShowProgressFragment : Fragment() {
@@ -21,7 +23,9 @@ class ShowProgressFragment : Fragment() {
     private val binding get() = _binding!!
     private val showProgressViewModel: ShowProgressViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerViewExercise: RecyclerView
     private lateinit var adapter: RecyclerView.Adapter<RuntimeExerciseViewHolder>
+    private lateinit var adapterExercise: RecyclerView.Adapter<RuntimeItemExerciseViewHolder>
     var runtimes = mutableListOf<RuntimeExercise>()
 
     override fun onCreateView(
@@ -40,11 +44,15 @@ class ShowProgressFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showProgressViewModel.getRuntime()
+        inicializarReciclerView()
+    }
+
+    fun inicializarReciclerView() {
+        adapter = RuntimeAdapter(runtimes)
         recyclerView = requireView().findViewById(R.id.rvRutine)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = RuntimeAdapter(runtimes)
         recyclerView.adapter = adapter
-        showProgressViewModel.getRuntime()
     }
 
 }

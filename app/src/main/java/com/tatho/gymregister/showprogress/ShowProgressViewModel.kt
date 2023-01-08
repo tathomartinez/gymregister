@@ -21,11 +21,6 @@ class ShowProgressViewModel : ViewModel() {
             fireBaseService.getCollectionRuntimes("runtime"){
                 runtimesMutableLiveData.postValue(it.toMutableList())
             }
-//            Log.e("GETRUNTIME", "aca llego ${collectionRutimes.size}")
-//            withContext(Dispatchers.Main) {
-//                Log.e("GETRUNTIME", "aca llego ${collectionRutimes.size}")
-//
-//            }
         }
     }
 }

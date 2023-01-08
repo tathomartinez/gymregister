@@ -54,7 +54,7 @@ class RegistrarSessionFragment : Fragment() {
                 val peso = viewHolder.pesoValue
                 val repeticiones = viewHolder.reps
                 repeticionesMutableList.add(Repeticion(peso, repeticiones))
-                Log.e("ITEMS", "peso : $peso , repeticiones: $repeticiones")
+//                Log.e("ITEMS", "peso : $peso , repeticiones: $repeticiones")
             }
 
             val exercise =
