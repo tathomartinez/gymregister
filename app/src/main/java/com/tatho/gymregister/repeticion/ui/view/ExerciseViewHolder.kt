@@ -2,16 +2,18 @@ package com.tatho.gymregister.repeticion.ui.view
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.tatho.gymregister.R
 import com.tatho.gymregister.databinding.RegisterItemBinding
 import com.tatho.gymregister.repeticion.data.Reps
 
 class ExerciseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    var unid: String = "KG"
     private var binding = RegisterItemBinding.bind(view)
     var pesoValue = 0
     var reps = 0
+
     init {
         binding.txtPeso.addTextChangedListener(object : TextWatcher {
 
@@ -61,10 +63,22 @@ class ExerciseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         })
 
+        binding.unidadMedida.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.radio_kg -> {
+                    unid = "KG"
+                }
+                R.id.radio_lb -> {
+                    unid = "LB"
+                }
+            }
+        }
+
     }
 
     fun bind(reps: Reps) {
         binding.txtPeso.setText(reps.peso.toString())
         binding.txtReps.setText(reps.reps.toString())
+        if (reps.unidadDeMedida == "KG") binding.radioKg.isChecked = true else binding.radioLb.isChecked = true
     }
 }

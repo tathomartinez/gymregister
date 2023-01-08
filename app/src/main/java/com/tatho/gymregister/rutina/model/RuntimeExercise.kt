@@ -1,13 +1,10 @@
 package com.tatho.gymregister.rutina.model
 
-import android.util.Log
 import com.tatho.gymregister.ejercicio.data.Exercise
 import com.tatho.gymregister.ejercicio.data.Exercise.Companion.mapToExercise
-import com.tatho.gymregister.repeticion.data.Repeticion
 import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class RuntimeExercise(
     var exercises: MutableList<Exercise>? = null,
@@ -16,7 +13,7 @@ class RuntimeExercise(
 ) : Serializable {
     companion object {
         private const val serialVersionUID = 1L
-        val date: String = SimpleDateFormat("ddMMyy", Locale.getDefault()).format(
+        var date: String = SimpleDateFormat("ddMMyy", Locale.getDefault()).format(
             Calendar.getInstance().time
         )
         var userId: Long = 0L
@@ -35,6 +32,14 @@ class RuntimeExercise(
                 userId = map["userId"] as Long,
                 exercises = mapToExercise(map)
             )
+        }
+
+        fun clean() {
+            date = SimpleDateFormat("ddMMyy", Locale.getDefault()).format(
+                Calendar.getInstance().time
+            )
+            userId = 0L
+            exercises.clear()
         }
     }
 }

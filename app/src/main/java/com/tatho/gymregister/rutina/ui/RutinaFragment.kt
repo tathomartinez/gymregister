@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.tatho.gymregister.R
 import com.tatho.gymregister.databinding.FragmentRutinaBinding
 import com.tatho.gymregister.repeticion.data.servicio.FireBaseService
@@ -32,10 +33,16 @@ class RutinaFragment : Fragment() {
             findNavController().navigate(R.id.action_rutinaFragment_to_registrarRepeticionFragment)
         }
         binding.saveRuntime.setOnClickListener {
-            if(
-            RuntimeExercise.exercises.isNotEmpty()
-            ) {
-                fireBaseService.addRuntime(RuntimeExercise.getCurrent())}
+            if (RuntimeExercise.exercises.isNotEmpty()) {
+                fireBaseService.addRuntime(RuntimeExercise.getCurrent())
+                Snackbar.make(view, "Rutina guardada", Snackbar.LENGTH_LONG)
+                    .show()
+                RuntimeExercise.clean()
+            }else{
+                Snackbar.make(view, "Por favor agrege minimo un ejercicio a su rutina", Snackbar.LENGTH_LONG)
+                    .show()
+
+            }
         }
         binding.btnShowProgress.setOnClickListener {
             findNavController().navigate(R.id.action_rutinaFragment_to_showProgressFragment)
